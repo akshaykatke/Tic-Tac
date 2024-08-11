@@ -1,10 +1,9 @@
-import { useState } from "react";
-import "./TicTac.css";
-import useTicTac from "../hooks/TicTacHooks";
+import { useNavigate } from 'react-router-dom';
+import useTicTac from '../hooks/TicTacHooks';
+import './TicTac.css';
 
-const initialboard = () => Array(9).fill(null);
-
-function TicTac() {
+const TicTac = () => {
+  const navigate = useNavigate();
   const {
     board,
     isNext,
@@ -14,30 +13,31 @@ function TicTac() {
     getStatusMessage,
     restGame,
   } = useTicTac();
-  // const [board, setBoard] = useState(initialboard);
-  console.log(board);
+
+  const goToPage = (page) => {
+    navigate(page);
+  };
+
   return (
-    <>
-      <div className="game">
-        <div className="status">{getStatusMessage}</div>
-        <button onClick={restGame}>Reset Game</button>
-        <div className="board">
-          {board.map((b, index) => {
-            return (
-              <button
-                className="cell"
-                key={index}
-                onClick={() => handleClick(index)}
-                disabled={b !== null}
-              >
-                {b}
-              </button>
-            );
-          })}
-        </div>
+    <div className="game">
+      <div className="status">{getStatusMessage()}</div>
+      <button onClick={restGame}>Reset Game</button>
+      <div className="board">
+        {board.map((b, index) => (
+          <button
+            className="cell"
+            key={index}
+            onClick={() => handleClick(index)}
+            disabled={b !== null}
+          >
+            {b}
+          </button>
+        ))}
       </div>
-    </>
+      <button onClick={() => goToPage("/second-page")}>Go to Second Page</button>
+      <button onClick={() => goToPage("/third-page")}>Go to Third Page</button>
+    </div>
   );
-}
+};
 
 export default TicTac;

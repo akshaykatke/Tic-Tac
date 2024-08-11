@@ -1,22 +1,31 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const initialboard = () => Array(9).fill(null);
+const initialBoard = () => Array(9).fill(null);
+
 const useTicTac = () => {
-  const [board, setBoard] = useState(initialboard);
-  const [isNext, SetIsNext] = useState(true);
-  const WINNING_PATTERNS = [];
-  const calculateWinner = () => {};
+  const [board, setBoard] = useState(initialBoard);
+  const [isNext, setIsNext] = useState(true);
+  const WINNING_PATTERNS = []; // Define winning patterns
+  const calculateWinner = () => {
+    // Implement winner calculation logic
+    return null;
+  };
   const handleClick = (index) => {
-    //check  winning
     const winner = calculateWinner();
     if (winner || board[index]) return;
     const newBoard = [...board];
-    newBoard[index] = isNext ? "x" : "o";
+    newBoard[index] = isNext ? 'X' : 'O';
     setBoard(newBoard);
-    SetIsNext(!isNext);
+    setIsNext(!isNext);
   };
-  const getStatusMessage = () => {};
-  const restGame = () => {};
+  const getStatusMessage = () => {
+    // Implement status message logic
+    return '';
+  };
+  const restGame = () => {
+    setBoard(initialBoard());
+    setIsNext(true);
+  };
 
   return {
     board,
@@ -28,4 +37,5 @@ const useTicTac = () => {
     restGame,
   };
 };
+
 export default useTicTac;

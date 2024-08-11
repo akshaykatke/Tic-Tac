@@ -1,0 +1,33 @@
+/* SecondPage.css */
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px; /* Adjust as needed */
+  box-sizing: border-box;
+}
+
+.card-id, .card-name, .card-color, .card-price {
+  margin: 5px 0; /* Space between text elements */
+  font-size: 16px;
+}
+
+ .card-price {
+  margin: 5px 0; /* Space between text elements */
+  font-size: 16px;
+  color: red;
+}
+
+.card-name {
+  font-weight: bold;
+}
